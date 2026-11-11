@@ -20,9 +20,9 @@ Las capturas de proyectos aportadas para esta página están en `public/images/`
 
 ## Publicación en GitHub Pages
 
-Repositorio: https://github.com/mrrobotbolivia-source/landing-page-mr-robot
+Repositorio: https://github.com/omarsion/landing-page-mr-robot
 
-Dirección de publicación: https://mrrobotbolivia-source.github.io/landing-page-mr-robot/
+Dirección de publicación: https://omarsion.github.io/landing-page-mr-robot/
 
 En `Settings > Pages`, seleccionar `GitHub Actions` como origen de publicación. El flujo `.github/workflows/deploy.yml` verifica TypeScript, compila y publica el sitio al subir cambios a `main`. También se puede iniciar desde la pestaña `Actions`.
 
