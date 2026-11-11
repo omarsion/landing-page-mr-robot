@@ -14,30 +14,11 @@ type LeadershipProfile = {
   summary: string;
   experience: string;
   portrait: { url: string; width: number; height: number };
-  cv: { url: string; previewBase: string; downloadName: string; pages: number };
+  cv: { url: string; previewBase: string; downloadName: string; pages: number; previewExtension?: string; previewWidth?: number; previewHeight?: number };
   highlights: { number: string; label: string; detail: string }[];
 };
 
 const leadership: LeadershipProfile[] = [
-  {
-    id: 'ian-vera',
-    name: 'Ian André Vera Pérez',
-    firstNames: 'Ian André',
-    lastNames: 'Vera Pérez',
-    position: 'CEO Y FUNDADOR',
-    focus: 'DIRECCIÓN Y ESTRATEGIA',
-    caption: 'Tecnología con dirección e impacto.',
-    role: 'CEO y fundador · Desarrollador full stack · Arquitectura de software',
-    summary: 'Fundador y CEO de MR. ROBOT BOLIVIA y jefe del Departamento de Sistemas en FIEA Ecuador. Lidera el desarrollo de software a medida, la arquitectura de soluciones web y la automatización de procesos para clientes nacionales e internacionales.',
-    experience: 'Ha desarrollado soluciones tecnológicas para SEDES Cochabamba y WOWCOM SRL, combinando desarrollo full stack, integración de APIs y soporte TI para digitalizar procesos y fortalecer la operación de sus equipos.',
-    portrait: { url: `${import.meta.env.BASE_URL}images/ian-andre-vera-perez.jpeg`, width: 1280, height: 1130 },
-    cv: { url: `${import.meta.env.BASE_URL}cv/ian-andre-vera-perez.pdf`, previewBase: `${import.meta.env.BASE_URL}cv/ian-andre-vera-perez`, downloadName: 'Ian_Andre_Vera_Perez_CV.pdf', pages: 3 },
-    highlights: [
-      { number: '01', label: 'Liderazgo tecnológico', detail: 'Jefe del Departamento de Sistemas en FIEA Ecuador.' },
-      { number: '02', label: 'Desarrollo full stack', detail: 'Arquitectura de software, aplicaciones web y automatización.' },
-      { number: '03', label: 'Soluciones tecnológicas', detail: 'Experiencia con SEDES Cochabamba y WOWCOM SRL.' },
-    ],
-  },
   {
     id: 'omar-barea',
     name: 'Omar Ariel Barea Lima',
@@ -55,6 +36,44 @@ const leadership: LeadershipProfile[] = [
       { number: '01', label: 'Desarrollo full stack', detail: 'Sistemas web, interfaces y bases de datos.' },
       { number: '02', label: 'IA aplicada', detail: 'Herramientas de IA integradas al desarrollo de software.' },
       { number: '03', label: 'Trayectoria institucional', detail: 'Experiencia con TECBA, SEMAPA, SEDES y SEDEPOS.' },
+    ],
+  },
+  {
+    id: 'ian-vera',
+    name: 'Ian André Vera Pérez',
+    firstNames: 'Ian André',
+    lastNames: 'Vera Pérez',
+    position: 'CEO Y FUNDADOR',
+    focus: 'DIRECCIÓN Y ESTRATEGIA',
+    caption: 'Tecnología con dirección e impacto.',
+    role: 'CEO y fundador · Desarrollador full stack · Arquitectura de software',
+    summary: 'Fundador y CEO de MR. ROBOT BOLIVIA y jefe del Departamento de Sistemas en FIEA Ecuador. Lidera el desarrollo de software a medida, la arquitectura de soluciones web y la automatización de procesos para clientes nacionales e internacionales.',
+    experience: 'Ha desarrollado soluciones tecnológicas para SEDES Cochabamba y WOWCOM SRL, combinando desarrollo full stack, integración de APIs y soporte TI para digitalizar procesos y fortalecer la operación de sus equipos.',
+    portrait: { url: `${import.meta.env.BASE_URL}images/ian-andre-vera-perez-gray.png`, width: 1086, height: 1448 },
+    cv: { url: `${import.meta.env.BASE_URL}cv/ian-andre-vera-perez.pdf`, previewBase: `${import.meta.env.BASE_URL}cv/ian-andre-vera-perez`, downloadName: 'Ian_Andre_Vera_Perez_CV.pdf', pages: 3 },
+    highlights: [
+      { number: '01', label: 'Liderazgo tecnológico', detail: 'Jefe del Departamento de Sistemas en FIEA Ecuador.' },
+      { number: '02', label: 'Desarrollo full stack', detail: 'Arquitectura de software, aplicaciones web y automatización.' },
+      { number: '03', label: 'Soluciones tecnológicas', detail: 'Experiencia con SEDES Cochabamba y WOWCOM SRL.' },
+    ],
+  },
+  {
+    id: 'oscar-anave',
+    name: 'Oscar Fernando Anave Oporto',
+    firstNames: 'Oscar Fernando',
+    lastNames: 'Anave Oporto',
+    position: 'DESARROLLADOR',
+    focus: 'DESARROLLO FULL STACK',
+    caption: 'Soluciones claras, código sólido.',
+    role: 'Ingeniero de Sistemas · Desarrollador full stack',
+    summary: 'Desarrollador de aplicaciones web y sistemas de gestión, con experiencia en Laravel, PHP, PostgreSQL y JavaScript. Trabaja desde el análisis de requisitos hasta la implementación de soluciones a medida.',
+    experience: 'Ha desarrollado proyectos para clientes remotos y un sistema de gestión para Gimnasio Haven. También ha trabajado en mantenimiento y control de calidad de plataformas en producción en CochaPets, y realizó una pasantía de sistemas en SEDEPOS.',
+    portrait: { url: `${import.meta.env.BASE_URL}images/oscar-fernando-anave-oporto.png`, width: 1086, height: 1448 },
+    cv: { url: `${import.meta.env.BASE_URL}cv/oscar-fernando-anave-oporto.pdf`, previewBase: `${import.meta.env.BASE_URL}cv/oscar-fernando-anave-oporto`, downloadName: 'Oscar_Fernando_Anave_Oporto_CV.pdf', pages: 1, previewExtension: 'png', previewWidth: 1280, previewHeight: 1600 },
+    highlights: [
+      { number: '01', label: 'Desarrollo full stack', detail: 'Laravel, PHP, JavaScript y PostgreSQL.' },
+      { number: '02', label: 'Calidad de software', detail: 'Mantenimiento, pruebas y mejora de plataformas en producción.' },
+      { number: '03', label: 'Sistemas de gestión', detail: 'Soluciones web para clientes remotos y Gimnasio Haven.' },
     ],
   },
 ];
@@ -112,7 +131,7 @@ export default function Profile() {
             {/* La vista previa funciona sin un visor PDF nativo; el documento original sigue disponible. */}
             {Array.from({ length: activeProfile.cv.pages }, (_, index) => <figure className="cv-page" key={`${activeProfile.id}-${index}`}>
               <figcaption>Página {index + 1} de {activeProfile.cv.pages}</figcaption>
-              <img src={`${activeProfile.cv.previewBase}/pagina-${index + 1}.webp`} width={1191} height={1684} alt={`Página ${index + 1} del currículum de ${activeProfile.name}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <img src={`${activeProfile.cv.previewBase}/pagina-${index + 1}.${activeProfile.cv.previewExtension ?? 'webp'}`} width={activeProfile.cv.previewWidth ?? 1191} height={activeProfile.cv.previewHeight ?? 1684} alt={`Página ${index + 1} del currículum de ${activeProfile.name}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
             </figure>)}
           </div>
           <div className="cv-dialog__footer">
